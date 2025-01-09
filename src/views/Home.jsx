@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IoIosSend } from "react-icons/io";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { generateContent } from "../models/Model.jsx";
 import ReactMarkdown from "react-markdown"; // to render markdown responses
 
@@ -63,16 +64,17 @@ export default function Home() {
             onChange={handleUserInput}
             onKeyDown={handleKeyPress}
             placeholder="Type your message here..."
-            className="h-full p-1"
+            className="h-full p-1 text-2xl text-gray-800"
           ></textarea>
 
-          <div className="button-group">
-            <button onClick={handleClear} className="clear-btn">
-              Clear
+          <div className="button-group items-center">
+            <button
+              onClick={handleClear}
+              className="text-gray-500 text-4xl bg-none "
+            >
+              <RiDeleteBin6Line />
             </button>
-            <p classsname="text-4xl text-gray-400 align-center">
-              {wordCount}/300
-            </p>
+            <h1 className="text-gray-500 font-semibold">{wordCount}/300</h1>
             <button
               onClick={handleSubmit}
               className="send-btn flex justify-center items-center gap-2"
@@ -87,7 +89,9 @@ export default function Home() {
           {isLoading ? (
             <p className="loading-text">Generating response...</p>
           ) : response ? (
-            <ReactMarkdown className="text-lg">{response}</ReactMarkdown>
+            <ReactMarkdown className="text-2xl text-gray-700">
+              {response}
+            </ReactMarkdown>
           ) : (
             <p className="text-5xl align-center"></p>
           )}
