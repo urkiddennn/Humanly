@@ -3,6 +3,7 @@ import { IoIosSend } from "react-icons/io";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { generateContent } from "../models/Model.jsx";
 import ReactMarkdown from "react-markdown"; // to render markdown responses
+import Header from "../components/Header.jsx";
 
 export default function Home() {
   const [userInput, setUserInput] = useState("");
@@ -55,7 +56,7 @@ export default function Home() {
 
   return (
     <div className="chat-container flex justify-center items-center flex-col">
-      <h1 className="text-3xl font-bold">Humanly</h1>
+      <Header />
       <div className="w-3/4 h-28 border border-gray-300 rounded-lg"></div>
       <div className="w-3/4 h-full flex ">
         <div className="input-side ">
