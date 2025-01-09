@@ -13,7 +13,7 @@ function Header() {
         <a href="https://www.facebook.com/Urkidden">
           <FaFacebook />
         </a>
-        <a href="https://www.facebook.com/Urkidden">
+        <a href="https://github.com/urkiddennn/Humanly">
           <FaGithub />
         </a>
       </div>
