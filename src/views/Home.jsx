@@ -57,20 +57,20 @@ export default function Home() {
     <div className="chat-container flex justify-center items-center flex-col">
       <h1 className="text-3xl font-bold">Humanly</h1>
       <div className="w-3/4 h-28 border border-gray-300 rounded-lg"></div>
-      <div className="w-3/4 h-full flex gap-5">
+      <div className="w-3/4 h-full flex ">
         <div className="input-side ">
           <textarea
             value={userInput}
             onChange={handleUserInput}
             onKeyDown={handleKeyPress}
-            placeholder="Type your message here..."
+            placeholder="Type or paste your text here...."
             className="h-full p-1 text-2xl text-gray-800"
           ></textarea>
 
           <div className="button-group items-center">
             <button
               onClick={handleClear}
-              className="text-gray-500 text-4xl bg-none "
+              className="text-gray-500 text-3xl bg-none "
             >
               <RiDeleteBin6Line />
             </button>
