@@ -8,6 +8,14 @@ export default function Home() {
   const [response, setResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const wordCount = userInput.split(/\s+/).filter(Boolean).length;
+  const letterCount = userInput.length;
+
+  //
+  const handleTextChange = (e) => {
+    setUserInput(e.target.value);
+  };
+
   const handleUserInput = (e) => {
     setUserInput(e.target.value);
   };
@@ -62,7 +70,9 @@ export default function Home() {
             <button onClick={handleClear} className="clear-btn">
               Clear
             </button>
-            <p classsname="text-4xl text-gray-400 align-center">12/300</p>
+            <p classsname="text-4xl text-gray-400 align-center">
+              {wordCount}/300
+            </p>
             <button
               onClick={handleSubmit}
               className="send-btn flex justify-center items-center gap-2"
