@@ -65,7 +65,7 @@ export default function Home() {
             onChange={handleUserInput}
             onKeyDown={handleKeyPress}
             placeholder="Type or paste your text here...."
-            className="h-full p-1 text-2xl text-gray-800"
+            className="h-full p-1 text-2xl text-gray-800 border-none outline-none"
           ></textarea>
 
           <div className="button-group items-center">
