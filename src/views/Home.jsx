@@ -27,7 +27,7 @@ export default function Home() {
     setIsLoading(true);
     try {
       const res = await generateContent(userInput);
-      setResponse(res() + "");
+      setResponse(res());
       setUserInput("");
     } catch (err) {
       console.error("Error generating response:", err);
