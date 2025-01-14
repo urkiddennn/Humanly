@@ -39,7 +39,7 @@ export default function Home() {
     try {
       const res = await generateContent(userInput, mode);
       setResponse(res);
-      setUserInput("");
+      setUserInput(userInput);
     } catch (err) {
       console.error("Error generating response:", err);
       setResponse("Failed to generate response.");
