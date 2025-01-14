@@ -2,14 +2,8 @@ import React, { useState } from "react";
 
 export function Modes({ onModeChange }) {
   const options = [
-    {
-      label: "Simple",
-      value: "Simple",
-    },
-    {
-      label: "Advanced",
-      value: "Advanced",
-    },
+    { label: "Simple", value: "Simple" },
+    { label: "Advanced", value: "Advanced" },
   ];
   const [value, setValue] = useState("");
 

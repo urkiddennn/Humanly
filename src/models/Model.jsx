@@ -10,5 +10,5 @@ export const generateContent = async (prompt, mode) => {
       "Make it humanly so that it doesn't look like it is AI generated. Make sure not to change the context."
   );
   console.log(result.response.text());
-  return result.response.text; // return the response
+  return result.response.text;
 };

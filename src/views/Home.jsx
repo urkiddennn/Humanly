@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IoIosSend } from "react-icons/io";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { generateContent } from "../models/Model.jsx";
-import ReactMarkdown from "react-markdown"; // to render markdown responses
+import ReactMarkdown from "react-markdown";
 import Header from "../components/Header.jsx";
 import Modes from "../components/Modes.jsx";
 
@@ -18,12 +18,6 @@ export default function Home() {
   };
 
   const wordCount = userInput.split(/\s+/).filter(Boolean).length;
-  const letterCount = userInput.length;
-
-  //
-  const handleTextChange = (e) => {
-    setUserInput(e.target.value);
-  };
 
   const handleUserInput = (e) => {
     setUserInput(e.target.value);
@@ -44,7 +38,7 @@ export default function Home() {
     setIsLoading(true);
     try {
       const res = await generateContent(userInput, mode);
-      setResponse(res());
+      setResponse(res);
       setUserInput("");
     } catch (err) {
       console.error("Error generating response:", err);
@@ -55,7 +49,7 @@ export default function Home() {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSubmit();
     }
@@ -64,9 +58,9 @@ export default function Home() {
   return (
     <div className="chat-container flex justify-center items-center flex-col">
       <Header />
-      <Modes />
-      <div className="w-3/4 h-full flex ">
-        <div className="input-side ">
+      <Modes onModeChange={handleModeChange} />
+      <div className="w-3/4 h-full flex">
+        <div className="input-side">
           <textarea
             value={userInput}
             onChange={handleUserInput}
@@ -78,7 +72,7 @@ export default function Home() {
           <div className="button-group items-center">
             <button
               onClick={handleClear}
-              className="text-gray-500 text-3xl bg-none "
+              className="text-gray-500 text-3xl bg-none"
             >
               <RiDeleteBin6Line />
             </button>
