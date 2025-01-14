@@ -6,7 +6,7 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 export const generateContent = async (prompt, mode) => {
   const result = await model.generateContent(
     prompt +
-      `Make the result ${mode} to AI detector. Make basic words only and don't change teh context.`
+      `Make the result ${mode} to AI detector. Make basic words only and don't change the context and length of the text.`
   );
   console.log(result.response.text());
   return result.response.text;
