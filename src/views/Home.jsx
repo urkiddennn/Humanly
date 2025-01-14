@@ -10,6 +10,12 @@ export default function Home() {
   const [userInput, setUserInput] = useState("");
   const [response, setResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [mode, setMode] = useState("");
+
+  const handleModeChange = (newMode) => {
+    setMode(newMode);
+    console.log("Mode changed to:", newMode);
+  };
 
   const wordCount = userInput.split(/\s+/).filter(Boolean).length;
   const letterCount = userInput.length;
@@ -37,7 +43,7 @@ export default function Home() {
 
     setIsLoading(true);
     try {
-      const res = await generateContent(userInput);
+      const res = await generateContent(userInput, mode);
       setResponse(res());
       setUserInput("");
     } catch (err) {
