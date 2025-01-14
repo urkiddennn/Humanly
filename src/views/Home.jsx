@@ -66,20 +66,22 @@ export default function Home() {
             onChange={handleUserInput}
             onKeyDown={handleKeyPress}
             placeholder="Type or paste your text here...."
-            className="h-full p-1 text-2xl text-gray-800 border-none outline-none"
+            className="h-full p-1 text-xl md:text-2xl text-gray-800 border-none outline-none"
           ></textarea>
 
           <div className="button-group items-center">
             <button
               onClick={handleClear}
-              className="text-gray-500 text-3xl bg-none"
+              className="text-gray-500 text-2xl md:text-3xl bg-none"
             >
               <RiDeleteBin6Line />
             </button>
-            <h1 className="text-gray-500 font-semibold">{wordCount}/300</h1>
+            <h1 className="text-gray-500 md:text-xl text-lg font-semibold">
+              {wordCount}/300
+            </h1>
             <button
               onClick={handleSubmit}
-              className="send-btn flex justify-center items-center gap-2"
+              className="send-btn flex justify-center items-center gap-2 text-lg md:text-xl"
             >
               <IoIosSend />
               <p>Humanize</p>
