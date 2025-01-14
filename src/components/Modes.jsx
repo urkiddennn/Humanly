@@ -14,13 +14,15 @@ export function Modes({ onModeChange }) {
   };
 
   return (
-    <div className="pl-4 pr-4 w-3/4 h-28 border border-gray-300 rounded-lg flex justify-start gap-10 items-center">
-      <h1 className="text-2xl text-gray-500 font-semibold">Options:</h1>
+    <div className="pl-4 pr-4 md:w-3/4 w-full md:h-28 h-12 border border-gray-300 rounded-lg flex justify-start gap-10 items-center">
+      <h1 className="text-md md:text-2xl text-gray-500 font-semibold">
+        Options:
+      </h1>
       <div className="flex h-full">
         {options.map((option) => (
           <button
             key={option.value}
-            className={`border-r border-l border-t-0 border-b-0 font-semibold text-2xl border-gray-300 px-4 py-2 h-full ${
+            className={`border-r border-l border-t-0 border-b-0 font-semibold text-md  md:text-2xl border-gray-300 px-4 py-2 h-full ${
               value === option.value
                 ? "bg-green-600 text-white"
                 : "text-gray-500"

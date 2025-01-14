@@ -56,11 +56,11 @@ export default function Home() {
   };
 
   return (
-    <div className="chat-container flex justify-center items-center flex-col">
+    <div className="chat-container flex justify-center p-1 items-center flex-col md:p-5">
       <Header />
       <Modes onModeChange={handleModeChange} />
-      <div className="w-3/4 h-full flex">
-        <div className="input-side">
+      <div className="md:w-3/4 w-full h-full flex sm:flex-row flex-col">
+        <div className="input-side h-1/2 md:h-full">
           <textarea
             value={userInput}
             onChange={handleUserInput}
@@ -87,7 +87,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="response-side">
+        <div className="response-side h-1/2 md:h-full">
           {isLoading ? (
             <p className="loading-text">Generating response...</p>
           ) : response ? (
