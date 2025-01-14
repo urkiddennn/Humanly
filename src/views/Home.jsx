@@ -4,6 +4,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { generateContent } from "../models/Model.jsx";
 import ReactMarkdown from "react-markdown"; // to render markdown responses
 import Header from "../components/Header.jsx";
+import Modes from "../components/Modes.jsx";
 
 export default function Home() {
   const [userInput, setUserInput] = useState("");
@@ -57,7 +58,7 @@ export default function Home() {
   return (
     <div className="chat-container flex justify-center items-center flex-col">
       <Header />
-      <div className="w-3/4 h-28 border border-gray-300 rounded-lg"></div>
+      <Modes />
       <div className="w-3/4 h-full flex ">
         <div className="input-side ">
           <textarea
