@@ -60,7 +60,7 @@ export default function Home() {
       <Header />
       <Modes onModeChange={handleModeChange} />
       <div className="md:w-3/4 w-full h-full flex sm:flex-row flex-col">
-        <div className="input-side h-1/2 md:h-full border-none">
+        <div className="input-side h-1/2 md:h-full rounded-t-md">
           <textarea
             value={userInput}
             onChange={handleUserInput}
