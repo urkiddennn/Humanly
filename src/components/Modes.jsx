@@ -14,7 +14,7 @@ export function Modes({ onModeChange }) {
   };
 
   return (
-    <div className="pl-4 pr-4 md:w-3/4 w-full md:h-28 h-12 border border-gray-300 rounded-lg flex justify-start gap-10 items-center">
+    <div className="pl-4 pr-4 md:w-3/4 w-full md:h-24 h-12 border border-gray-300 rounded-lg flex justify-start gap-10 items-center">
       <h1 className="text-md md:text-2xl text-gray-500 font-semibold">
         Options:
       </h1>
