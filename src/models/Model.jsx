@@ -3,9 +3,8 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const genAI = new GoogleGenerativeAI("AIzaSyBZm4-Unp7cnMZrjdUbEGN8WYtGLQWhUmI");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-// Helper function to check if the input is a question
 const isQuestion = (input) => {
-  const questionPattern = /\?\s*$/; // Checks if the input ends with a question mark
+  const questionPattern = /\?\s*$/;
   return questionPattern.test(input.trim());
 };
 
