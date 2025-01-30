@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoIosSend } from "react-icons/io";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { AiOutlineCopy } from "react-icons/ai"; // Import copy icon
+import { AiOutlineCopy } from "react-icons/ai";
 import { generateContent } from "../models/Model.jsx";
 import ReactMarkdown from "react-markdown";
 import Header from "../components/Header.jsx";
@@ -13,16 +13,14 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [mode, setMode] = useState("");
 
+  const wordCount = userInput.split(/\s+/).filter(Boolean).length;
+
   const handleModeChange = (newMode) => {
     setMode(newMode);
     console.log("Mode changed to:", newMode);
   };
 
-  const wordCount = userInput.split(/\s+/).filter(Boolean).length;
-
-  const handleUserInput = (e) => {
-    setUserInput(e.target.value);
-  };
+  const handleUserInput = (e) => setUserInput(e.target.value);
 
   const handleClear = () => {
     setUserInput("");
@@ -40,7 +38,6 @@ export default function Home() {
     try {
       const res = await generateContent(userInput, mode);
       setResponse(res);
-      setUserInput(userInput);
     } catch (err) {
       console.error("Error generating response:", err);
       setResponse("Failed to generate response.");
@@ -58,14 +55,9 @@ export default function Home() {
 
   const handleCopy = () => {
     if (response) {
-      navigator.clipboard.writeText(response).then(
-        () => {
-          // alert("Response copied to clipboard!");
-        },
-        (err) => {
-          console.error("Failed to copy text: ", err);
-        }
-      );
+      navigator.clipboard.writeText(response).catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
     }
   };
 
@@ -74,6 +66,7 @@ export default function Home() {
       <Header />
       <Modes onModeChange={handleModeChange} />
       <div className="md:w-3/4 w-full h-full flex sm:flex-row flex-col">
+        {/* Input Side */}
         <div className="input-side h-1/2 md:h-full rounded-t-lg sm:rounded-l-lg md:rounded-r-none">
           <textarea
             value={userInput}
@@ -81,8 +74,7 @@ export default function Home() {
             onKeyDown={handleKeyPress}
             placeholder="Type or paste your text here...."
             className="h-full p-1 text-xl md:text-2xl text-gray-800 border-none outline-none"
-          ></textarea>
-
+          />
           <div className="button-group items-center">
             <button
               onClick={handleClear}
@@ -103,6 +95,7 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Response Side */}
         <div className="response-side h-1/2 md:h-full">
           {isLoading ? (
             <p className="loading-text">Generating response...</p>
