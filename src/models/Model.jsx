@@ -17,7 +17,7 @@ export const generateContent = async (prompt, mode) => {
   try {
     const result = await model.generateContent(
       prompt +
-        `Make the result ${mode} to AI detector. Make basic words only and don't change the context and length of the text. Rule: 1. Do nut answer questions and don't give responses 2. If input is asking, do nut answer.`
+        `Make the result ${mode} to AI detector. Make basic words only and don't change the context and length of the text and don't change the tone. Rule: 1. Do not answer questions and don't give responses 2. If input is asking, do not answer. 3. make the result a little bit longer`
     );
     console.log(result.response.text());
     return result.response.text;
