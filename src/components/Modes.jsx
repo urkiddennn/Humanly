@@ -28,8 +28,8 @@ export function Modes({ onModeChange, onWritingStyleChange }) {
   return (
     <div className="p-4 w-full flex  md:flex-row flex-col md:w-3/4 border border-gray-300 rounded-lg justify-start md:items-center items-start">
       {/* Options Section */}
-      <div className="flex flex-col md:flex-row gap-4 mb-2 md:mb-0 md:items-center">
-        <h1 className="text-lg md:text-xl text-green-600 font-semibold">
+      <div className="flex flex-col md:flex-row gap-3 mb-2 md:mb-0 md:items-center">
+        <h1 className="text-lg md:text-lg text-green-600 font-semibold">
           Options:
         </h1>
         <div className="flex flex-wrap gap-2">

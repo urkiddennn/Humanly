@@ -81,21 +81,21 @@ export default function Home() {
             onChange={handleUserInput}
             onKeyDown={handleKeyPress}
             placeholder="Type or paste your text here...."
-            className="h-full p-1 text-xl md:text-2xl text-gray-800 border-none outline-none"
+            className="h-full p-1 text-sm md:text-2xl text-gray-800 border-none outline-none"
           />
           <div className="button-group items-center">
             <button
               onClick={handleClear}
-              className="text-gray-500 text-2xl md:text-3xl bg-none"
+              className="text-gray-500 text-lg md:text-3xl bg-none"
             >
               <RiDeleteBin6Line />
             </button>
-            <h1 className="text-gray-500 md:text-xl text-lg font-semibold">
+            <h1 className="text-gray-500 md:text-xl text-sm font-semibold">
               {wordCount}/300
             </h1>
             <button
               onClick={handleSubmit}
-              className="send-btn flex justify-center items-center gap-2 text-lg md:text-xl"
+              className="send-btn flex justify-center items-center gap-2 text-sm md:text-xl"
             >
               <IoIosSend />
               <p>Humanize</p>
@@ -109,13 +109,13 @@ export default function Home() {
             <p className="loading-text">Generating response...</p>
           ) : response ? (
             <div className="response-content">
-              <ReactMarkdown className="text-2xl text-gray-700">
+              <ReactMarkdown className="text-sm text-gray-700">
                 {response}
               </ReactMarkdown>
               <div className="button-group items-center">
                 <button
                   onClick={handleCopy}
-                  className="bg-blue-500 copy-btn flex items-center gap-2 mt-2 pr-4 pl-4 rounded-md h-12 text-lg text-white"
+                  className="bg-blue-500 copy-btn flex items-center gap-2 mt-2 pr-4 pl-4 rounded-md h-12 text-sm text-white"
                 >
                   <AiOutlineCopy />
                   <p>Copy Text</p>
@@ -123,7 +123,7 @@ export default function Home() {
               </div>
             </div>
           ) : (
-            <p className="text-5xl align-center"></p>
+            <p className="text-sm align-center"></p>
           )}
         </div>
       </div>
