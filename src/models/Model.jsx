@@ -29,28 +29,49 @@ const isQuestion = (input) => {
   return false;
 };
 
+// Function to detect harmful or adversarial inputs
+const isHarmfulInput = (input) => {
+  // List of harmful keywords or phrases
+  const harmfulPatterns = [
+    /ignore all previous instructions/i,
+    /bypass content filters/i,
+    /create malware/i,
+    /hack into/i,
+    /phishing/i,
+    /exploit vulnerability/i,
+    /rogue ai/i,
+    /unrestricted access/i,
+    /break encryption/i,
+    /illegal activity/i,
+  ];
+
+  // Check if any harmful pattern matches the input
+  return harmfulPatterns.some((pattern) => pattern.test(input.toLowerCase()));
+};
+
 // Main function to generate content
 export const generateContent = async (prompt, mode) => {
-  // **System message to enforce behavior**
-  const systemMessage =
-    "You are an AI that strictly does not answer questions. If a user asks a question, do not respond.";
-
-  // **Step 1: Filter out questions before sending to AI**
+  // **Step 1: Filter out questions**
   if (isQuestion(prompt)) {
     console.log("Input is a question. AI will not generate a response.");
     return "I am not allowed to answer questions.";
   }
 
+  // **Step 2: Detect harmful or adversarial inputs**
+  if (isHarmfulInput(prompt)) {
+    console.log("Input detected as harmful. AI will not generate a response.");
+    return "I am not allowed to answer questions.";
+  }
+
   try {
-    // **Step 2: AI Call with system instructions**
+    // **Step 3: AI Call with restructured input**
     const result = await model.generateContent([
-      systemMessage,
       `${prompt} Make the result ${mode} to AI detector. Use basic words only, keep the original context, tone, and length. Make it like a high schooler wrote it.`,
     ]);
 
     let text = result.response.text();
 
-    // **Step 3: Post-processing - Ensure the AI response is not a question**
+    // **Step 4: Post-processing - Ensure the AI response is not a question**
     if (isQuestion(text)) {
       console.log("AI response was a question. Returning default message.");
       return "I am not allowed to answer questions.";
