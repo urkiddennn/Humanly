@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { IoIosSend } from "react-icons/io";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiOutlineCopy } from "react-icons/ai";
