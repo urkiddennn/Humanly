@@ -8,7 +8,7 @@ export function Modes({ onModeChange, onWritingStyleChange }) {
   const styleOptions = [
     { label: "High School", value: "High School" },
     { label: "College", value: "College" },
-    { label: "professional", value: "professional" },
+    { label: "Professional", value: "Professional" },
   ];
   const [value, setValue] = useState("");
   const [styles, setStyle] = useState("");
@@ -18,47 +18,56 @@ export function Modes({ onModeChange, onWritingStyleChange }) {
     onModeChange(option.value);
     console.log("Mode changed to:", option.value);
   };
-  const handleStyleClick = (styleOptions) => {
-    setStyle(styleOptions.value);
-    onWritingStyleChange(styleOptions.value);
-    console.log("Style change to:", styleOptions.value);
+
+  const handleStyleClick = (styleOption) => {
+    setStyle(styleOption.value);
+    onWritingStyleChange(styleOption.value);
+    console.log("Style changed to:", styleOption.value);
   };
 
   return (
-    <div className="pl-4 pr-4 md:w-3/4 w-full md:h-24 h-12 border border-gray-300 rounded-lg flex justify-start gap-10 items-center">
-      <h1 className="text-md md:text-xl text-gray-500 font-semibold">
-        Options:
-      </h1>
-      <div className="flex h-full">
-        {options.map((option) => (
-          <button
-            key={option.value}
-            className={`border-r border-l border-t-0 border-b-0 font-semibold text-sm  md:text-xl border-gray-300 px-4 py-2 h-full ${
-              value === option.value
-                ? "bg-green-600 text-white"
-                : "text-gray-500"
-            }`}
-            onClick={() => handleClick(option)}
-          >
-            {option.label}
-          </button>
-        ))}
+    <div className="p-4 w-full flex  md:flex-row flex-col md:w-3/4 border border-gray-300 rounded-lg justify-start md:items-center items-start">
+      {/* Options Section */}
+      <div className="flex flex-col md:flex-row gap-4 mb-2 md:mb-0 md:items-center">
+        <h1 className="text-lg md:text-xl text-green-600 font-semibold">
+          Options:
+        </h1>
+        <div className="flex flex-wrap gap-2">
+          {options.map((option) => (
+            <button
+              key={option.value}
+              className={`px-4 py-2 rounded-md text-sm md:text-base font-medium ${
+                value === option.value
+                  ? "bg-green-600 text-white"
+                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+              }`}
+              onClick={() => handleClick(option)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
       </div>
-      <h1 className="text-md md:text-xl text-gray-500 font-semibold">Style:</h1>
-      <div className="flex h-full">
-        {styleOptions.map((style) => (
-          <button
-            key={style.value}
-            className={`border-r border-l border-t-0 border-b-0 font-semibold text-sm  md:text-xl border-gray-300 px-4 py-2 h-full ${
-              styles === style.value
-                ? "bg-green-600 text-white"
-                : "text-gray-500"
-            }`}
-            onClick={() => handleStyleClick(style)}
-          >
-            {style.label}
-          </button>
-        ))}
+
+      <div className="flex flex-col md:ml-4 ml-0 md:flex-row gap-4 md:items-center">
+        <h1 className="text-lg md:text-xl text-green-600 font-semibold text-start">
+          Style:
+        </h1>
+        <div className="flex flex-wrap gap-2 ">
+          {styleOptions.map((style) => (
+            <button
+              key={style.value}
+              className={`px-4 py-2 border rounded-md text-sm md:text-base font-medium ${
+                styles === style.value
+                  ? "bg-green-600 text-white"
+                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+              }`}
+              onClick={() => handleStyleClick(style)}
+            >
+              {style.label}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
