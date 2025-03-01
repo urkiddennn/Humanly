@@ -1,28 +1,39 @@
 import React, { useState } from "react";
 
-export function Modes({ onModeChange }) {
+export function Modes({ onModeChange, onWritingStyleChange }) {
   const options = [
     { label: "Basic", value: "Basic" },
     { label: "Undetectable", value: "Undetectable" },
   ];
+  const styleOptions = [
+    { label: "High School", value: "High School" },
+    { label: "College", value: "College" },
+    { label: "professional", value: "professional" },
+  ];
   const [value, setValue] = useState("");
+  const [styles, setStyle] = useState("");
 
   const handleClick = (option) => {
     setValue(option.value);
     onModeChange(option.value);
     console.log("Mode changed to:", option.value);
   };
+  const handleStyleClick = (styleOptions) => {
+    setStyle(styleOptions.value);
+    onWritingStyleChange(styleOptions.value);
+    console.log("Style change to:", styleOptions.value);
+  };
 
   return (
     <div className="pl-4 pr-4 md:w-3/4 w-full md:h-24 h-12 border border-gray-300 rounded-lg flex justify-start gap-10 items-center">
-      <h1 className="text-md md:text-2xl text-gray-500 font-semibold">
+      <h1 className="text-md md:text-xl text-gray-500 font-semibold">
         Options:
       </h1>
       <div className="flex h-full">
         {options.map((option) => (
           <button
             key={option.value}
-            className={`border-r border-l border-t-0 border-b-0 font-semibold text-md  md:text-2xl border-gray-300 px-4 py-2 h-full ${
+            className={`border-r border-l border-t-0 border-b-0 font-semibold text-sm  md:text-xl border-gray-300 px-4 py-2 h-full ${
               value === option.value
                 ? "bg-green-600 text-white"
                 : "text-gray-500"
@@ -30,6 +41,22 @@ export function Modes({ onModeChange }) {
             onClick={() => handleClick(option)}
           >
             {option.label}
+          </button>
+        ))}
+      </div>
+      <h1 className="text-md md:text-xl text-gray-500 font-semibold">Style:</h1>
+      <div className="flex h-full">
+        {styleOptions.map((style) => (
+          <button
+            key={style.value}
+            className={`border-r border-l border-t-0 border-b-0 font-semibold text-sm  md:text-xl border-gray-300 px-4 py-2 h-full ${
+              styles === style.value
+                ? "bg-green-600 text-white"
+                : "text-gray-500"
+            }`}
+            onClick={() => handleStyleClick(style)}
+          >
+            {style.label}
           </button>
         ))}
       </div>

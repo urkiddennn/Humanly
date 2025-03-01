@@ -1,4 +1,3 @@
-import React from "react";
 import { SiRobotframework } from "react-icons/si";
 import { FaFacebook, FaGithub } from "react-icons/fa";
 

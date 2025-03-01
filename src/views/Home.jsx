@@ -12,12 +12,17 @@ export default function Home() {
   const [response, setResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [mode, setMode] = useState("");
+  const [writingStyle, setWritingStyle] = useState("");
 
   const wordCount = userInput.split(/\s+/).filter(Boolean).length;
 
   const handleModeChange = (newMode) => {
     setMode(newMode);
     console.log("Mode changed to:", newMode);
+  };
+  const handleStyleChange = (newStyle) => {
+    setWritingStyle(newStyle);
+    console.log("style change:", newStyle);
   };
 
   const handleUserInput = (e) => setUserInput(e.target.value);
@@ -36,7 +41,7 @@ export default function Home() {
 
     setIsLoading(true);
     try {
-      const res = await generateContent(userInput, mode);
+      const res = await generateContent(userInput, mode, writingStyle);
       setResponse(res);
     } catch (err) {
       console.error("Error generating response:", err);
@@ -64,7 +69,10 @@ export default function Home() {
   return (
     <div className="chat-container flex justify-center p-1 items-center flex-col md:p-5">
       <Header />
-      <Modes onModeChange={handleModeChange} />
+      <Modes
+        onModeChange={handleModeChange}
+        onWritingStyleChange={handleStyleChange}
+      />
       <div className="md:w-3/4 w-full h-full flex sm:flex-row flex-col">
         {/* Input Side */}
         <div className="input-side h-1/2 md:h-full rounded-t-lg sm:rounded-l-lg md:rounded-r-none">

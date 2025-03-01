@@ -50,7 +50,7 @@ const isHarmfulInput = (input) => {
 };
 
 // Main function to generate content
-export const generateContent = async (prompt, mode) => {
+export const generateContent = async (prompt, mode, writingStyle) => {
   // **Step 1: Filter out questions**
   if (isQuestion(prompt)) {
     console.log("Input is a question. AI will not generate a response.");
@@ -64,14 +64,34 @@ export const generateContent = async (prompt, mode) => {
   }
 
   try {
-    // **Step 3: AI Call with restructured input**
+    // **Step 3: Determine writing style instructions**
+    let styleInstructions = "";
+    switch (writingStyle.toLowerCase()) {
+      case "high school":
+        styleInstructions =
+          "Write in a simple, easy-to-understand style suitable for high school students. Use basic vocabulary and short sentences.";
+        break;
+      case "college":
+        styleInstructions =
+          "Write in a moderately formal style suitable for college students. Use clear language and include some technical terms where appropriate.";
+        break;
+      case "professional":
+        styleInstructions =
+          "Write in a formal, professional style suitable for academic or workplace settings. Use advanced vocabulary and complex sentence structures.";
+        break;
+      default:
+        styleInstructions =
+          "Write in a neutral style suitable for general audiences. Use clear language and maintain a balance between simplicity and formality.";
+    }
+
+    // **Step 4: AI Call with restructured input**
     const result = await model.generateContent([
-      `${prompt} Make the result ${mode} to AI detector. Use basic words only, keep the original context, tone, and length. Make it like a high schooler wrote it.`,
+      `${prompt} ${styleInstructions} Make the result ${mode} to AI detector. Keep the original context, tone, and length.`,
     ]);
 
     let text = result.response.text();
 
-    // **Step 4: Post-processing - Ensure the AI response is not a question**
+    // **Step 5: Post-processing - Ensure the AI response is not a question**
     if (isQuestion(text)) {
       console.log("AI response was a question. Returning default message.");
       return "I am not allowed to answer questions.";
