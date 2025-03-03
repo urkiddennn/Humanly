@@ -123,7 +123,7 @@ export default function Home() {
               </div>
             </div>
           ) : (
-            <p className="text-sm align-center"></p>
+            <p className="text-sm md:text-lg align-center"></p>
           )}
         </div>
       </div>
